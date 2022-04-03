@@ -1,10 +1,19 @@
+import email
 from pydoc import render_doc
 from django import http
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from .models import User as my_user
 
 # Create your views here.
+
+def my_index(request):
+    # return render(request, 'users/login.html')
+    print("리다이렉트")
+    
+    return render(request, 'users/index.html')
 
 
 def my_login(request):
@@ -13,19 +22,39 @@ def my_login(request):
         print("그냥 페이지만 들어왔다...")
         return render(request, 'users/login.html')
     elif request.method == "POST":
-        user_name = request.POST["username"]
+        user_email = request.POST["email"]
         user_passwd = request.POST["password"]
-        user_lastname = request.POST["lastname"]
-        user_fristname = request.POST["firstname"]
-        user_student_id = request.POST["student_id"]
 
-        user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-        user = User.objects.create_user(user_name, "", user_passwd)
-        user.save()
+        user = authenticate(email=user_email, password=user_passwd)
 
+        if user is not None:
+            print('와우 로그인!!!')
+        else:
+            print('아... 로그인 실패...')
         
         return HttpResponse("로그인에 성공 했습니다.")
     
 
 def my_signup(request):
-    return render(request, 'users/signup.html')
+    
+    if request.method != "POST":
+        return render(request, 'users/signup.html')
+    else:
+        user_email = request.POST["email"]
+        user_birth_of_date = request.POST["birth_of_date"]
+        user_passwd0 = request.POST["password0"]
+        user_passwd1 = request.POST["password1"]
+
+        if user_email is None and user_passwd0 != user_passwd1:
+            return HttpResponse("아이디 또는 비번이 틀립니다.")
+        else:
+            new_user = my_user.objects.create_user(email=user_email, date_of_birth = user_birth_of_date, password = user_passwd0)
+            
+            if new_user is None:
+                print("회원가입 실패...")
+                return HttpResponse("회원가입 실패...")
+            else:
+                print("회원가입 성공!!")
+                return HttpResponse("회원가입 성고!!")
+
+
