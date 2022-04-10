@@ -1,10 +1,12 @@
 import email
 from pydoc import render_doc
+import re
 from django import http
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from .models import User as my_user
 
 # Create your views here.
@@ -16,7 +18,15 @@ def my_index(request):
     return render(request, 'users/index.html')
 
 
+def my_logout(request):
+    if request.method == 'POST':            
+        logout(request)
+    print("Logout !!")
+    return render(request, 'users/index.html')
+
 def my_login(request):
+
+    print(request.POST)
 
     if request.method != "POST":
         print("그냥 페이지만 들어왔다...")
@@ -32,11 +42,10 @@ def my_login(request):
         else:
             print('아... 로그인 실패...')
         
-        return HttpResponse("로그인에 성공 했습니다.")
-    
+        return render(request, 'users/index.html', {'user':user})
 
 def my_signup(request):
-    
+
     if request.method != "POST":
         return render(request, 'users/signup.html')
     else:
