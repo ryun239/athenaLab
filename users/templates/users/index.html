@@ -27,14 +27,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 1000px;">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">주문</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,9 +38,6 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -69,12 +61,12 @@
     </nav>
 
     <div style="display: flex; flex-direction: row; text-align: center; justify-content: center; padding: 50px">
-            <div style="background-color: aqua; height: 700px; ">
+            <div style="background-color: aqua">
                 Block1
             </div>
-            <div style="background-color: blue; width: 300px">
+            <!-- <div style="background-color: blue; width: 300px">
                 block2
-            </div>
+            </div> -->
     </div>
 
 </body>

@@ -11,6 +11,7 @@ from .models import User as my_user
 
 # Create your views here.
 
+# Load Main Page
 def my_index(request):
     # return render(request, 'users/login.html')
     print("리다이렉트")
@@ -18,20 +19,22 @@ def my_index(request):
     return render(request, 'users/index.html')
 
 
+# Logout Function
 def my_logout(request):
-    if request.method == 'POST':            
+    print("로그아웃!!")
+    if request.method == 'GET':            
         logout(request)
-    print("Logout !!")
     return render(request, 'users/index.html')
 
+# Login Function
 def my_login(request):
-
-    print(request.POST)
+    print("[Debug] login method",request.method)
 
     if request.method != "POST":
-        print("그냥 페이지만 들어왔다...")
+        # Just in Page
         return render(request, 'users/login.html')
     elif request.method == "POST":
+        # In Page With User's Info
         user_email = request.POST["email"]
         user_passwd = request.POST["password"]
 
@@ -40,12 +43,12 @@ def my_login(request):
         if user is not None:
             print('와우 로그인!!!')
         else:
-            print('아... 로그인 실패...')
-        
+            return HttpResponse("계정이 정보가 잘 못 되었습니다.")
+
         return render(request, 'users/index.html', {'user':user})
 
+# Make New Account
 def my_signup(request):
-
     if request.method != "POST":
         return render(request, 'users/signup.html')
     else:
@@ -65,5 +68,3 @@ def my_signup(request):
             else:
                 print("회원가입 성공!!")
                 return HttpResponse("회원가입 성고!!")
-
-

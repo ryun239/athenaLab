@@ -1,19 +1,3 @@
-<!--
-<br>
-로그인 페이지 입니다
-<br>
-
-<form action="" method="POST">
-    {% csrf_token %}
-    이메일
-    <input name = "email" type="text">
-    비번
-    <input name = "password" type="text">
-    <input type="submit" value="로그인">
-</form> -->
-
-
-
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -64,9 +48,6 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">로그인</a>
                     </li>
 
@@ -102,20 +83,20 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="email" name="email">
+                            <input type="text" class="form-control" placeholder="Email" name="email">
                             
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password" name="password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember Me
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login!" class="btn float-right login_btn">
+                            <input type="submit" value="Login" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>
