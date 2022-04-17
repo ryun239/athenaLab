@@ -11,16 +11,16 @@ font-family: 'Numans', sans-serif;
 }
 
 .container{
+    padding-top: 50px;
 height: 100%;
 align-content: center;
 }
 
 .card{
-height: 370px;
-margin-top: auto;
-margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
+justify-content: center;
+align-items : center;
 }
 
 .social_icon span{

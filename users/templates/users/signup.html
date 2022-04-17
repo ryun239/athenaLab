@@ -1,14 +1,24 @@
-회원가입 페이지 입니다
+{% extends "base.html" %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    이메일
-    <input name = "email" type="text">
-    생년월일
-    <input name = "birth_of_date" type="text">
-    비번0
-    <input name = "password0" type="text">
-    비번1
-    <input name = "password1" type="text">
-    <input type="submit" value="가입">
-</form>
+{% block title %}
+    회원가입 페이지
+{% endblock %}
+
+{% block head %}
+    <!-- 회원가입 bootstarp Insert -->
+{% endblock %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        이메일
+        <input name = "email" type="text">
+        생년월일
+        <input name = "birth_of_date" type="text">
+        비번0
+        <input name = "password0" type="text">
+        비번1
+        <input name = "password1" type="text">
+        <input type="submit" value="가입">
+    </form>
+{% endblock %}
